@@ -75,4 +75,30 @@ for(int i = 0; i<length; i++)
     if (number < min) min = number;
 }
 
-Console.WriteLine("");
+Console.WriteLine($"Наимегьшее число: {min}");
+
+/////////////////////////////////
+// Задание 5. Игра «Угадай число»
+/////////////////////////////////
+
+Console.WriteLine("Задание 5. Игра «Угадай число»");
+Console.WriteLine("Введите максимальное число диапазона: ")
+number = int.Parse(Console.ReadLine());
+Random rand = new Random;
+int numberToGuess = rand.Next(number);
+int guess;
+bool guessed = false;
+
+Console.WriteLine("Угадайте число");
+while (!guessed)
+{
+    bool result = Int32.TryParse(input, out guess);
+    if (result == false) break;
+
+    switch (guess)
+    {
+        case guess > numberToGuess: Console.WriteLine("Слишком много"); break;
+        case guess < numberToGuess: Console.WriteLine("Слишком мало"); break;
+        case guess == numberToGuess: Console.WriteLine("!!! Правильно !!!"); guessed = true; break;
+    }
+}
